@@ -1,4 +1,6 @@
 # Dockerfile for https://github.com/adnanh/webhook
+FROM        python:3
+RUN         pip3 install py-air-control
 FROM        golang:alpine3.11 AS build
 MAINTAINER  Almir Dzinovic <almir@dzinovic.net>
 WORKDIR     /go/src/github.com/adnanh/webhook
@@ -18,5 +20,3 @@ WORKDIR     /etc/webhook
 VOLUME      ["/etc/webhook"]
 EXPOSE      9000
 ENTRYPOINT  ["/usr/local/bin/webhook"]
-FROM        python:3
-RUN         pip3 install py-air-control
