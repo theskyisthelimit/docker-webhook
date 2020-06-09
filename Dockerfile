@@ -3,6 +3,7 @@ FROM        golang:alpine3.11 AS build
 MAINTAINER  Almir Dzinovic <almir@dzinovic.net>
 WORKDIR     /go/src/github.com/adnanh/webhook
 ENV         WEBHOOK_VERSION 2.7.0
+RUN         pip3 install py-air-control
 RUN         apk add --update -t build-deps curl libc-dev gcc libgcc
 RUN         curl -L --silent -o webhook.tar.gz https://github.com/adnanh/webhook/archive/${WEBHOOK_VERSION}.tar.gz && \
             tar -xzf webhook.tar.gz --strip 1 &&  \
